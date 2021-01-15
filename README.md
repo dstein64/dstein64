@@ -1,5 +1,7 @@
 ### Hi there 👋
 
+[neuralart](https://github.com/dstein64/dstein64/blob/202101151228/neuralart.png?raw=true)
+
 <!--
 **dstein64/dstein64** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 

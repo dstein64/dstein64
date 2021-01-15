@@ -21,4 +21,13 @@ jobs:
     - name: Run
       run: |
         pip install neuralart
-        neuralart test-example.png
+        neuralart             \
+          --xlim -2 2         \
+          --ylim -0.5 0.5     \
+          --xres 15447        \
+          --color-space bw    \
+          --depth 11          \
+          --output-std 1.5    \
+          --hidden-std 1.1    \
+          --seed 202101151228 \
+          neuralart.png

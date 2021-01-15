@@ -42,3 +42,4 @@ jobs:
         cat README.md.template | sed s/\$TIMESTAMP/$TIMESTAMP/ > README.md
         git add README.md
         git commit -m 'Automatic commit: Update README.md'
+        git push origin main

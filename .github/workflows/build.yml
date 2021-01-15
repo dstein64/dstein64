@@ -22,6 +22,7 @@ jobs:
       run: |
         # Configure Environment
         TIMESTAMP="$(date +%Y%m%d%H%M)"
+        BRANCH="neuralart_$TIMESTAMP"
         pip install neuralart
         git config user.name 'neuralart'
         git config user.email '<>'
@@ -38,19 +39,22 @@ jobs:
           --seed "$TIMESTAMP" \
           neuralart.png
 
-        # Save image to new branch
-        git checkout -b "$TIMESTAMP"
+        # Save image to new branch. Branches are used since they can be deleted (and their files
+        # garbage collected), which will keep the repo size small, in accordance with GitHub's
+        # recommendation: "We recommend repositories remain small, ideally less than 1 GB..."
+        git checkout -b "$BRANCH"
         git add neuralart.png
         git commit -m 'Automatic commit: Add neuralart.png'
-        git push origin "$TIMESTAMP"
+        git push origin "$BRANCH"
 
         # Update README.md to use the new image
         git checkout main
-        cat README.md.template | sed s/\$TIMESTAMP/$TIMESTAMP/ > README.md
+        cat README.md.template | sed s/\$BRANCH/$BRANCH/ > README.md
         git add README.md
         git commit -m 'Automatic commit: Update README.md'
         git push origin main
 
-        # Delete prior branches
-        BRANCHES="$(git ls-remote --heads origin | awk '{print $2}' | sed s/refs\\/heads\\///)"
-        git push origin --delete $(echo "$BRANCHES" | grep --invert-match "main\|$TIMESTAMP")
+        # Delete prior neuralart branches
+        BRANCHES="$(git ls-remote --heads origin | awk '{print $2}')"
+        BRANCHES="$(echo "$BRANCHES" | sed s/refs\\/heads\\/// | grep ^neuralart_)"
+        git push origin --delete $(echo "$BRANCHES" | grep --invert-match "$BRANCH")

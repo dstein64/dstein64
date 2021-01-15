@@ -50,7 +50,7 @@ jobs:
         git checkout -b "$BRANCH"
         git add neuralart.png neuralart-thumbnail.jpg
         git commit -m 'Automatic commit: Add neuralart.png'
-        git push origin "$BRANCH"854
+        git push origin "$BRANCH"
 
         git checkout main
 

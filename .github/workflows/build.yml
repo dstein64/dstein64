@@ -13,10 +13,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Run
-      run: |
-        sudo apt-get install python3 python3-pip
-        pip3 install --user neuralart
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
 
     - name: Test
       run: neuralart test-example.png

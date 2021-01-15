@@ -20,8 +20,13 @@ jobs:
 
     - name: Run
       run: |
+        # Configure Environment
         TIMESTAMP="$(date +%Y%m%d%H%M)"
         pip install neuralart
+        git config user.name 'neuralart'
+        git config user.email '<>'
+
+        # Generate image
         neuralart             \
           --xlim -2 2         \
           --ylim -0.5 0.5     \
@@ -32,14 +37,20 @@ jobs:
           --hidden-std 1.1    \
           --seed "$TIMESTAMP" \
           neuralart.png
-        git config user.name 'neuralart'
-        git config user.email '<>'
+
+        # Save image to new branch
         git checkout -b "$TIMESTAMP"
         git add neuralart.png
         git commit -m 'Automatic commit: Add neuralart.png'
         git push origin "$TIMESTAMP"
+
+        # Update README.md to use the new image
         git checkout main
         cat README.md.template | sed s/\$TIMESTAMP/$TIMESTAMP/ > README.md
         git add README.md
         git commit -m 'Automatic commit: Update README.md'
         git push origin main
+
+        # Delete prior branches
+        BRANCHES="$(git ls-remote --heads origin | awk '{print $2}' | sed s/refs\\/heads\\///)"
+        git push origin --delete $(echo "$BRANCHES" | grep --invert-match "main\|$TIMESTAMP")

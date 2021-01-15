@@ -1,6 +1,6 @@
 ### Hi there 👋
 
-<img src="https://github.com/dstein64/dstein64/releases/download/neuralart/neuralart.png">
+<img src="https://github.com/dstein64/dstein64/releases/download/neuralart/neuralart.png" width="800px">
 
 <!--
 **dstein64/dstein64** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.

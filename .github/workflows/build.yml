@@ -47,8 +47,12 @@ jobs:
         git commit -m 'Automatic commit: Add neuralart.png'
         git push origin "$BRANCH"
 
-        # Update README.md to use the new image
         git checkout main
+
+        # Add back an unstaged version of neuralart.png (for artifact upload later)
+        git show "$BRANCH":neuralart.png > neuralart.png
+
+        # Update README.md to use the new image
         cat README.md.template | sed s/\$BRANCH/$BRANCH/ > README.md
         git add README.md
         git commit -m 'Automatic commit: Update README.md'

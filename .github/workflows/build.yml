@@ -20,8 +20,8 @@ jobs:
 
     - name: Run
       run: |
-        pip install neuralart
         TIMESTAMP="$(date +%Y%m%d%H%M)"
+        pip install neuralart
         neuralart             \
           --xlim -2 2         \
           --ylim -0.5 0.5     \
@@ -32,6 +32,8 @@ jobs:
           --hidden-std 1.1    \
           --seed "$TIMESTAMP" \
           neuralart.png
+        git config user.name 'Readme Bot'
+        git config user.email '<>'
         git checkout -b "$TIMESTAMP"
         git add neuralart.png
         git commit -m 'Automatic commit: Add neuralart.png'

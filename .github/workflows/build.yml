@@ -1,0 +1,22 @@
+name: build
+on:
+  workflow_dispatch:
+  schedule:
+    # Run hourly (* is a special character in YAML, so quote the string)
+    - cron:  '0 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Run
+      run: |
+        apt install python3 python3-pip
+        pip install neuralart
+
+    - name: Test
+      run: neuralart test-example.png

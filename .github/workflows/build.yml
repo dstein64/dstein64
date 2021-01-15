@@ -65,3 +65,10 @@ jobs:
           # converted to field separators (spaces).
           git push origin --delete $BRANCHES
         fi
+
+    # Artifacts are retained for 90 days.
+    - name: Upload
+      uses: actions/upload-artifact@v2
+      with:
+        name: neuralart
+        path: neuralart.png

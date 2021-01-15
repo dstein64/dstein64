@@ -54,4 +54,14 @@ jobs:
         git commit -m 'Automatic commit: Update README.md'
         git push origin main
 
-
+        # Delete prior neuralart branches
+        BRANCHES="$(git ls-remote --heads origin | awk '{print $2}')"
+        # 'cat' is at the end of the pipes to ignore an error code from grep in the case of no
+        # match.
+        BRANCHES="$(echo "$BRANCHES" | sed s/refs\\/heads\\/// | grep ^neuralart_ | cat)"
+        BRANCHES="$(echo "$BRANCHES" | grep --invert-match "$BRANCH" | cat)"
+        if [ -n "$BRANCHES" ]; then
+          # Quotes are intentially omitted from surrounding $BRANCHES, so that newlines are
+          # converted to field separators (spaces).
+          git push origin --delete $BRANCHES
+        fi

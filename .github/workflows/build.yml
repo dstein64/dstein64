@@ -18,5 +18,7 @@ jobs:
       with:
         python-version: 3.9
 
-    - name: Test
-      run: neuralart test-example.png
+    - name: Run
+      run: |
+        pip install neuralart
+        neuralart test-example.png

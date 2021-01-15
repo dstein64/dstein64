@@ -59,5 +59,7 @@ jobs:
         BRANCHES="$(echo "$BRANCHES" | sed s/refs\\/heads\\/// | grep ^neuralart_)"
         BRANCHES="$(echo "$BRANCHES" | grep --invert-match "$BRANCH")"
         if [ -n "$BRANCHES" ]; then
+          # Quotes are intentially omitted from surrounding $BRANCHES, so that newlines are
+          # converted to field separators (spaces).
           git push origin --delete $BRANCHES
         fi

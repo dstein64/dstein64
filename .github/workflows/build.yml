@@ -32,7 +32,7 @@ jobs:
           --hidden-std 1.1    \
           --seed "$TIMESTAMP" \
           neuralart.png
-        git config user.name 'Readme Bot'
+        git config user.name 'neuralart'
         git config user.email '<>'
         git checkout -b "$TIMESTAMP"
         git add neuralart.png

@@ -1,3 +1,4 @@
-[![neuralart](https://github.com/dstein64/dstein64/blob/neuralart_202101152227/neuralart-thumbnail.jpg?raw=true)][link]
+[![neuralart][thumbnail][link]
 
-[link]: https://github.com/dstein64/dstein64/blob/neuralart_202101152227/neuralart.png?raw=true
+[thumbnail]: https://github.com/dstein64/dstein64/blob/neuralart_202101152230/neuralart-thumbnail.jpg?raw=true
+[link]: https://github.com/dstein64/dstein64/blob/neuralart_202101152230/neuralart.png?raw=true

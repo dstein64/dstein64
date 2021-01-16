@@ -31,7 +31,7 @@ jobs:
         neuralart             \
           --xlim -2 2         \
           --ylim -0.5 0.5     \
-          --xres 8192         \
+          --xres 12000        \
           --color-space bw    \
           --depth 11          \
           --output-std 1.5    \

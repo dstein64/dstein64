@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        ref: main
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -51,12 +53,6 @@ jobs:
         git add neuralart.png neuralart-thumbnail.jpg
         git commit -m 'Automatic commit: Add neuralart.png'
         git push origin "$BRANCH"
-
-        git checkout main
-
-        # Add back unstaged version of images (for artifact upload later)
-        git show "$BRANCH":neuralart.png > neuralart.png
-        git show "$BRANCH":neuralart-thumbnail.jpg > neuralart-thumbnail.jpg
 
         # Update README.md to use the new image
         cat README.md.template | sed s/\$BRANCH/$BRANCH/ > README.md

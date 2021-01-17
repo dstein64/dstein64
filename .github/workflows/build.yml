@@ -54,18 +54,9 @@ jobs:
         git commit -m 'Automatic commit: Add neuralart.png'
         git push origin "$BRANCH"
 
-        # Update the default branch. Redirect output to /dev/null to prevent any private
-        # information leaks. Use a secret with a personal access token created specifically
-        # for this task, since the GITHUB_TOKEN secret does not have sufficient permissions
-        # for changing the default branch.
-        curl                                                           \
-          --request PATCH                                              \
-          --url https://api.github.com/repos/dstein64/dstein64         \
-          --header 'Accept: application/vnd.github.v3+json'            \
-          --header 'Authorization: Bearer ${{ secrets.TOKEN }}'        \
-          --header 'Content-Type: application/json'                    \
-          --data "{\"default_branch\": \"$BRANCH\"}"                   \
-          &>/dev/null
+        # Update tag.
+        git tag --force neuralart
+        git push --force origin neuralart
 
         # Delete prior neuralart branches
         BRANCHES="$(git ls-remote --heads origin | awk '{print $2}')"

@@ -33,7 +33,7 @@ jobs:
         neuralart             \
           --xlim -2 2         \
           --ylim -0.5 0.5     \
-          --xres 12000        \
+          --xres 1200        \
           --color-space bw    \
           --depth 11          \
           --output-std 1.5    \
@@ -58,7 +58,7 @@ jobs:
         cat README.md.template | sed s/\$BRANCH/$BRANCH/ > README.md
         git add README.md
         git commit -m 'Automatic commit: Update README.md'
-        git push origin main
+        git push origin "$BRANCH"
 
         # Delete prior neuralart branches
         BRANCHES="$(git ls-remote --heads origin | awk '{print $2}')"

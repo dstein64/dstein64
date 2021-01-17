@@ -54,8 +54,6 @@ jobs:
         git commit -m 'Automatic commit: Add neuralart.png'
         git push origin "$BRANCH"
 
-        sleep 10
-
         # Update the default branch. Redirect output to /dev/null to prevent any private
         # information leaks.
         curl                                                           \

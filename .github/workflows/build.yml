@@ -62,7 +62,7 @@ jobs:
           --request PATCH                                              \
           --url https://api.github.com/repos/dstein64/dstein64         \
           --header 'Accept: application/vnd.github.v3+json'            \
-          --header 'Authorization: Bearer ${{ secrets.TOKEN }}' \
+          --header 'Authorization: Bearer ${{ secrets.TOKEN }}'        \
           --header 'Content-Type: application/json'                    \
           --data "{\"default_branch\": \"$BRANCH\"}"                   \
           &>/dev/null

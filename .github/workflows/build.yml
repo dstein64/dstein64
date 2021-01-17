@@ -33,7 +33,7 @@ jobs:
         neuralart             \
           --xlim -2 2         \
           --ylim -0.5 0.5     \
-          --xres 1200        \
+          --xres 12000        \
           --color-space bw    \
           --depth 11          \
           --output-std 1.5    \
@@ -55,7 +55,9 @@ jobs:
         git push origin "$BRANCH"
 
         # Update the default branch. Redirect output to /dev/null to prevent any private
-        # information leaks.
+        # information leaks. Use a secret with a personal access token created specifically
+        # for this task, since the GITHUB_TOKEN secret does not have sufficient permissions
+        # for changing the default branch.
         curl                                                           \
           --request PATCH                                              \
           --url https://api.github.com/repos/dstein64/dstein64         \

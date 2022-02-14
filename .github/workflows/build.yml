@@ -70,7 +70,7 @@ jobs:
           git push origin --delete $BRANCHES
         fi
 
-    # Artifacts are retained for 90 days.
+    # Artifacts are retained for 90 days by default. Reduce to 1 week.
     - name: Upload
       uses: actions/upload-artifact@v2
       with:
@@ -78,3 +78,4 @@ jobs:
         path: |
           neuralart.png
           neuralart-thumbnail.jpg
+        retention-days: 7

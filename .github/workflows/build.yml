@@ -46,7 +46,7 @@ jobs:
           neuralart.png
 
         # Generate thumbnail
-        # The image is displayed with 854 pixel width on github.com. This was multipled by four
+        # The image is displayed with 854 pixel width on github.com. This was multiplied by four
         # to accommodate HiDPI and future width changes. JPEG is used to further save space.
         convert neuralart.png -resize 3416 neuralart-thumbnail.jpg
 

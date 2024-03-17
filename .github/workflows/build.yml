@@ -20,7 +20,7 @@ jobs:
         ref: main
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11'
 
@@ -76,7 +76,7 @@ jobs:
 
     # Artifacts are retained for 90 days by default. Reduce to 1 week.
     - name: Upload
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: neuralart
         path: |

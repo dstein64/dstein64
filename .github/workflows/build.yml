@@ -1,8 +1,10 @@
 name: build
 # When the 'permissions' key is specified, unspecified permission scopes (e.g.,
 # actions, checks, etc.) are set to no access (none).
+# Restrict global permissions to read-only. Jobs that need write access (e.g.,
+# for pushing branches and tags) specify elevated permissions at the job level.
 permissions:
-  contents: write
+  contents: read
 on:
   workflow_dispatch:
   schedule:
@@ -12,6 +14,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Write access is needed for pushing branches and tags. Job-level
+    # permissions replace the workflow-level permissions (they are not
+    # merged), so unspecified scopes are set to no access (none).
+    permissions:
+      contents: write
 
     steps:
     - name: Checkout
